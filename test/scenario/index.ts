@@ -8,6 +8,14 @@ const scenarios: Scenario[] = [
       await page.goto('https://blog.bouzuya.net/2018/01/01/');
       return {};
     },
+    name: 'entry-detail/320x480'
+  },
+  {
+    action: async (page: Page) => {
+      await page.setViewport({ height: 480, width: 320 });
+      await page.goto('https://blog.bouzuya.net/2018/01/01/related/');
+      return {};
+    },
     name: 'entry-index/320x480'
   }
 ];
