@@ -10,6 +10,12 @@
   "bugs": {
     "url": "https://github.com/bouzuya/bbn-screenshot-testing/issues"
   },
+  "devDependencies": {
+    "@bouzuya/screenshot-testing": "^0.1.0",
+    "@types/node": "^9.3.0",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.2"
+  },
   "homepage": "https://github.com/bouzuya/bbn-screenshot-testing#readme",
   "keywords": [],
   "license": "MIT",
@@ -19,6 +25,9 @@
     "url": "git+https://github.com/bouzuya/bbn-screenshot-testing.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "approve": "node .tmp/test/index.js approve",
+    "capture": "node .tmp/test/index.js capture",
+    "compare": "node .tmp/test/index.js compare",
+    "test": "node .tmp/test/index.js test"
   }
 }
