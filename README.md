@@ -1,6 +1,8 @@
 # bbn-screenshot-testing
 
-A screenshot testing project for bbn: blog.bouzuya.net.
+A screenshot testing project for bbn: blog.bouzuya.net using [bouzuya/screenshot-testing-js][].
+
+[bouzuya/screenshot-testing-js]: https://github.com/bouzuya/screenshot-testing-js
 
 ## License
 
