@@ -4,15 +4,13 @@ import { Page } from 'puppeteer';
 const myScenarios = [
   {
     name: 'entry-detail',
-    url: 'https://blog.bouzuya.net/2018/01/01/',
-    viewports: ['320x480', '1024x768']
+    url: 'https://blog.bouzuya.net/2018/01/01/'
   },
   {
     name: 'entry-index',
-    url: 'https://blog.bouzuya.net/2018/01/01/related/',
-    viewports: ['320x480', '1024x768']
+    url: 'https://blog.bouzuya.net/2018/01/01/related/'
   }
-];
+].map((i) => Object.assign({ viewports: ['320x480', '1024x768'] }, i));
 
 const scenarios: Scenario[] = myScenarios.reduce((a, myScenario) => {
   const { name, url, viewports } = myScenario;
