@@ -1,39 +1,32 @@
 import { Scenario } from '@bouzuya/screenshot-testing/lib/data/scenario';
 import { Page } from 'puppeteer';
 
-const scenarios: Scenario[] = [
+const myScenarios = [
   {
-    action: async (page: Page) => {
-      await page.setViewport({ height: 480, width: 320 });
-      await page.goto('https://blog.bouzuya.net/2018/01/01/');
-      return {};
-    },
-    name: 'entry-detail/320x480'
+    name: 'entry-detail',
+    url: 'https://blog.bouzuya.net/2018/01/01/',
+    viewports: ['320x480', '1024x768']
   },
   {
-    action: async (page: Page) => {
-      await page.setViewport({ height: 768, width: 1024 });
-      await page.goto('https://blog.bouzuya.net/2018/01/01/');
-      return {};
-    },
-    name: 'entry-detail/1024x768'
-  },
-  {
-    action: async (page: Page) => {
-      await page.setViewport({ height: 480, width: 320 });
-      await page.goto('https://blog.bouzuya.net/2018/01/01/related/');
-      return {};
-    },
-    name: 'entry-index/320x480'
-  },
-  {
-    action: async (page: Page) => {
-      await page.setViewport({ height: 768, width: 1024 });
-      await page.goto('https://blog.bouzuya.net/2018/01/01/related/');
-      return {};
-    },
-    name: 'entry-index/1024x768'
+    name: 'entry-index',
+    url: 'https://blog.bouzuya.net/2018/01/01/related/',
+    viewports: ['320x480', '1024x768']
   }
 ];
+
+const scenarios: Scenario[] = myScenarios.reduce((a, myScenario) => {
+  const { name, url, viewports } = myScenario;
+  return a.concat(viewports.map((viewport) => {
+    return {
+      action: async (page: Page) => {
+        const [width, height] = viewport.split('x').map((i) => parseInt(i, 10));
+        await page.setViewport({ height, width });
+        await page.goto(url);
+        return {};
+      },
+      name: name + '/' + viewport
+    };
+  }));
+}, [] as Scenario[]);
 
 export { scenarios };
