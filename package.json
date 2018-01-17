@@ -18,7 +18,8 @@
     "puppeteer": "^0.13.0",
     "rimraf": "^2.6.2",
     "tslint": "^5.8.0",
-    "typescript": "^2.6.2"
+    "typescript": "^2.6.2",
+    "watch": "^1.0.2"
   },
   "homepage": "https://github.com/bouzuya/bbn-screenshot-testing#readme",
   "keywords": [],
@@ -38,6 +39,6 @@
     "test": "node .tmp/es2015/test/index.js test ci",
     "watch": "npm-run-all -p 'watch:*'",
     "watch:build": "npm run build -- --watch",
-    "watch:test": "node .tmp/es2015/test/index.js test"
+    "watch:test": "watch 'node .tmp/es2015/test/index.js test' '.tmp/es2015/test'"
   }
 }
