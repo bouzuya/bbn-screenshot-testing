@@ -1,16 +1,18 @@
-import { Scenario } from '@bouzuya/screenshot-testing/lib/data/scenario';
+import { Scenario } from '@bouzuya/screenshot-testing';
 import { Page } from 'puppeteer';
 
 const myScenarios = [
   {
     name: 'entry-detail',
-    url: 'https://blog.bouzuya.net/2018/01/01/'
+    path: '/2018/01/01/'
   },
   {
     name: 'entry-index',
-    url: 'https://blog.bouzuya.net/2018/01/01/related/'
+    path: '/2018/01/01/related/'
   }
-].map((i) => Object.assign({ viewports: ['320x480', '1024x768'] }, i));
+]
+  .map((i) => Object.assign({ viewports: ['320x480', '1024x768'] }, i))
+  .map((i) => Object.assign({ url: 'https://blog.bouzuya.net' + i.path }, i));
 
 const scenarios: Scenario[] = myScenarios.reduce((a, myScenario) => {
   const { name, url, viewports } = myScenario;
